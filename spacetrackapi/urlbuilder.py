@@ -71,7 +71,7 @@ def build(controller, action, request_class, predicates = {}):
     url += '/class/' + urllib.parse.quote(request_class)
 
     for key, value in predicates.items():
-        url += '/' + urllib.parse.quote(key)
-        url += '/' + urllib.parse.quote(value)
+        url += '/' + urllib.parse.quote(str(key))
+        url += '/' + urllib.parse.quote(str(value))
 
     return BASE_URL + url
