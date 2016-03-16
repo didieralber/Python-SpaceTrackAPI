@@ -1,15 +1,21 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
+import spacetrackapi
 
 here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.rst')) as f:
     long_description = f.read()
+
+requirements = []
+with open(path.join(here, 'requirements.txt')) as f:
+    for line in f:
+        requirements.append(line)
 
 setup(
     name='spacetrackapi',
-    version='0.1',
+    version=spacetrackapi.__version__,
     description='A client for the Space-Track API',
     long_description=long_description,
     url='https://github.com/didieralber/Python-SpaceTrackAPI',
@@ -18,9 +24,7 @@ setup(
     license='MIT',
 
     packages=['spacetrackapi'],
-    install_requires=[
-        'requests==2.9.1'
-    ],
+    install_requires=requirements,
 
     classifiers=[
         'Development Status :: 3 - Alpha',
